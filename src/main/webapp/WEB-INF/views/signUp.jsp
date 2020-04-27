@@ -43,7 +43,9 @@
             </tr>
             <tr>
                 <th>패스워드확인</th>
-                <td><input type="password" class="form-control" id="pass2"></td>        
+                <td><input type="password" class="form-control" id="pass2"></td>  
+                <td></td>
+                <td><input type="button" value="확인" onclick="checkPass();"></td>      
             </tr>
             <tr>
                 <th>이메일</th>
