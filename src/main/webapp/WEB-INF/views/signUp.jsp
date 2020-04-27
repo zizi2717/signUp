@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script src="js/check.js"></script>
 </head>    
  <body>
  	<div class="container">
@@ -17,43 +19,43 @@
         <table class="table table-boardered">
 			<tr>
                 <th>이름</th>
-                <td><input type="text" class="form-control" name="name" placeholder="한국어"></td>        
+                <td><input type="text" class="form-control" id="name" placeholder="한국어"></td>        
             </tr>
             <tr>
                 <th>성별</th>
                 <td>
-	                <label><input type="checkbox" name="sex" value="남">남성</label>
+	                <label><input type="checkbox" name="sex" value="남" onclick="checkSex(this);">남성</label>
 	                &nbsp;&nbsp;&nbsp;
-	     			<label><input type="checkbox" name="sex" value="여">여성</label>
-     			</td>      
+	     			<label><input type="checkbox" name="sex" value="여" onclick="checkSex(this);">여성</label>
+     			</td>
             </tr>
             <tr>
                 <th>아이디</th>
-                <td><input type="text" class="form-control" name="id"></td>        
+                <td><input type="text" class="form-control" id="id"></td>        
             </tr>
             <tr>
                 <th>패스워드</th>
-                <td><input type="password" class="form-control" name="pass1" placeholder="숫자, 문자 포함"></td>      
+                <td><input type="password" class="form-control" id="pass1" placeholder="숫자, 문자 포함"></td>      
             </tr>
             <tr>
                 <th>패스워드확인</th>
-                <td><input type="password" class="form-control" name="pass2"></td>        
+                <td><input type="password" class="form-control" id="pass2"></td>        
             </tr>
             <tr>
                 <th>이메일</th>
-                <td><input type="email" class="form-control" name="email"></td>       
+                <td><input type="email" class="form-control" id="email"></td>       
             </tr>
             <tr>
                 <th>전화번호</th>
-                <td><input type="tel" class="form-control" name="tel" placeholder="-제외하고 입력"></td>       
+                <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>       
             </tr>
             <tr>
                 <th>주소</th>
-                <td><input type="text" class="form-control" name="address"></td>      
+                <td><input type="text" class="form-control" id="address"></td>      
             </tr>
             <tr>
                 <th>생년월일</th>
-                <td><input type="text" class="form-control" name="birth"></td>      
+                <td><input type="text" class="form-control" id="birth"></td>      
             </tr>
             <tr>
                 <td colspan="2">
