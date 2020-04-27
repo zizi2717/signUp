@@ -1,3 +1,4 @@
+
 function checkSpace(tmp) { 
 	if(tmp.search(/\s/) != -1) 	{ 
 		return true; 

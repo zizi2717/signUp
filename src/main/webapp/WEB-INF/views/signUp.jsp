@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
-	<script src="js/check.js"></script>
+	
 </head>    
- <body>
+<body>
  	<div class="container">
 	<div class="row">
 	<div class="col-sm-12 text-center" >
@@ -67,6 +67,7 @@
     </div>
     </div>
     </div>
-</div>
+	</div>
+	<script src="./resources/js/check.js"></script>
 </body>
 </html>
