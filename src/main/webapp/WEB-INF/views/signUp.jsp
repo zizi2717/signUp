@@ -19,7 +19,9 @@
         <table class="table table-boardered">
 			<tr>
                 <th>이름</th>
-                <td><input type="text" class="form-control" id="name" placeholder="한국어"></td>        
+                <td><input type="text" class="form-control" id="name" placeholder="한국어"></td>
+                <td></td>
+                <td><input type="button" value="확인" onclick="checkName();"></td>   
             </tr>
             <tr>
                 <th>성별</th>
@@ -31,7 +33,9 @@
             </tr>
             <tr>
                 <th>아이디</th>
-                <td><input type="text" class="form-control" id="id"></td>        
+                <td><input type="text" class="form-control" id="id"></td>
+                <td><input type="hidden" class="form-control" id="tmpId" value="zizi2717" ></td>
+                <td><input type="button" value="확인" onclick="checkId();"></td>
             </tr>
             <tr>
                 <th>패스워드</th>
