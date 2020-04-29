@@ -81,15 +81,15 @@ function checkPass() {
 
 function setEmail(selValue) {
 	var fmSave = document.fm;
-	var selIndex = selValue[selValue.selectedIndex].value;
+	var email2Save = selValue[selValue.selectedIndex].value;
 	var tmp = 1;
 	
-	if (selIndex == "dir") {
-		selIndex = "";
+	if (email2Save == "dir") {
+		email2Save = "";
 		tmp = 0;
 	}
 	
-	fmSave.email2.value = selIndex;
+	fmSave.email2.value = email2Save;
 	fmSave.email2.disabled = tmp;
 }
 

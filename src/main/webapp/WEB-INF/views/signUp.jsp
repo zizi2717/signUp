@@ -52,11 +52,11 @@
                 <td><input type="text" class="form-control" id="email"></td>
                 <td>
                 	<form name="fm">
-                	<input type="text" class="form-control" id="email2" >
+                	<input type="text" class="form-control" id="email2" disabled>
                 	<select onchange="setEmail(this);">
                 		<option value="">선택</option>
-                		<option value="naver.com">&#64;naver.com</option>
-                		<option value="daum.net">&#64;daum.net</option>
+                		<option value="naver.com">naver.com</option>
+                		<option value="daum.net">daum.net</option>
                 		<option value="dir">직접입력</option>
                 	</select>
                 	</form>
