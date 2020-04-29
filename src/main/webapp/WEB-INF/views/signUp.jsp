@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 </head>    
 <body>
@@ -49,19 +49,39 @@
             </tr>
             <tr>
                 <th>이메일</th>
-                <td><input type="email" class="form-control" id="email"></td>       
+                <td><input type="text" class="form-control" id="email"></td>
+                <td>
+                	<form name="fm">
+                	<input type="text" class="form-control" id="email2" >
+                	<select onchange="setEmail(this);">
+                		<option value="">선택</option>
+                		<option value="naver.com">&#64;naver.com</option>
+                		<option value="daum.net">&#64;daum.net</option>
+                		<option value="dir">직접입력</option>
+                	</select>
+                	</form>
+                </td>
             </tr>
             <tr>
                 <th>전화번호</th>
-                <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>       
+                <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>
+                <td></td>
+                <td><input type="button" value="확인" onclick="checkTel();"></td>
             </tr>
             <tr>
                 <th>주소</th>
-                <td><input type="text" class="form-control" id="address"></td>      
+                <td>
+                	<input type="text" class="form-control" id="zip" placeholder="우편번호">
+                	<input type="text" class="form-control" id="addr2" placeholder="상세주소">
+                </td>
+                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소"></td>
+                <td><input type="button" value="검색" onclick="execDaumPostcode();"></td>
             </tr>
             <tr>
                 <th>생년월일</th>
-                <td><input type="text" class="form-control" id="birth"></td>      
+                <td><select id="year" onchange="setDate();"></select></td>
+                <td><select id="month" onchange="setDate();"></select></td>
+                <td><select id="day"></select></td> 
             </tr>
             <tr>
                 <td colspan="2">
