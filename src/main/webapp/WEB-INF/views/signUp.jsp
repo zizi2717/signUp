@@ -79,9 +79,21 @@
             </tr>
             <tr>
                 <th>생년월일</th>
-                <td><select id="year" onchange="setDate();"></select></td>
-                <td><select id="month" onchange="setDate();"></select></td>
-                <td><select id="day"></select></td> 
+                <td>
+                	<select id="year" onchange="setMonth();">
+                		<option value="">년도 선택</option>
+                	</select>
+                </td>
+                <td>
+                	<select id="month" onchange="setDay();">
+                		<option value="">월 선택</option>
+                	</select>
+                </td>
+                <td>
+                	<select id="day">
+                		<option value="">일 선택</option>
+                	</select>
+                </td> 
             </tr>
             <tr>
                 <td colspan="2">

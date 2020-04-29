@@ -145,36 +145,34 @@ function execDaumPostcode() {
 }
 
 window.onload = function() {
-	var tmp = 0;
-		
+	var tmp = 1
 	for(var i = 1900; i <= 2020; i++) {
 		document.getElementById('year').options[tmp] = new Option(i, i);
 		tmp++;
 	}
-	tmp = 0;
-	for(var j = 1; j <= 12; j++) {
-		document.getElementById('month').options[tmp] = new Option(j, j);
-		tmp++;
-	}
 }
 
-function setDate() {
+function setMonth() {
+	for(var j = 1; j <= 12; j++) {
+		document.getElementById('month').options[j] = new Option(j, j);
+	}
+	document.getElementById('day').options.length = 1;
+}
+
+function setDay() {
 	var yearSave = document.getElementById('year').value;
 	var monthSave = document.getElementById('month').value;
 	var tmpDate = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-	
-	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+  
+	if ((yearSave % 4 == 0 && yearSave % 100 != 0) || yearSave % 400 == 0) {
 		tmpDate[1] = 29;
-		for (var k = 1; k <= tmpDate[k]; k++) {
-			
-		}
-	} else {
-		System.out.println(year + "년은 평년");
 	}
 	
+	for (var k = 1; k <= tmpDate[monthSave - 1]; k++) {
+		document.getElementById('day').options.length = k;
+		document.getElementById('day').options[k] = new Option(k, k);
+	}
 }
-
-
 
 
 
