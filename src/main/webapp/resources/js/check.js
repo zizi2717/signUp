@@ -13,33 +13,34 @@ function checkSpace(tmp) {
 	}
 }
 
+var pat1 = /[가-힣]/;
+var pat2 = /[~!@#$%^&*()_+|<>?:{}]/;
+var pat3 = /[0-9]/;
+var pat4 = /[a-zA-Z]/;
 function checkName() {
-	var nameSave = document.getElementById('name').value;
-	var tmp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	var nameSave = document.getElementById('name');
+		
+	checkNull(nameSave.value, '이름');
 	
-	checkNull(nameSave, '이름');
-	
-	if (checkSpace(nameSave)) {
+	if (checkSpace(nameSave.value)) {
 		console.log("공백 포함");
-	}
-	
-	if(!tmp.test(nameSave)) {
-		console.log("한글만 입력해주세요");
-	}
+		nameSave.focus();
+	} else if(!pat1.test(nameSave.value) || pat2.test(nameSave.value) || pat3.test(nameSave.value) || pat4.test(nameSave.value)) {
+		console.log("한글만");
+		nameSave.focus();
+	}	
 }
 
-function checkSex(tmp) {
+function checkSex(sexParm) {
 	var sexSave = document.getElementsByName('sex');
 	
 	for (var i = 0; i < sexSave.length; i++) {
-		if (sexSave[i] != tmp) {
+		if (sexSave[i] != sexParm) {
 			sexSave[i].checked = false;
 		}
 	}
 }
 
-var pattern = /[~!@#$%^&*()_+|<>?:{}]/;
-var pattern2 = /[0-9]/;
 function checkId() {
 	var idSave = document.getElementById('id').value;
 	var tmpIdSave = document.getElementById('tmpId').value;
@@ -48,14 +49,10 @@ function checkId() {
 	
 	if (checkSpace(idSave)) {
 		console.log("공백 포함");
-	}
-	
-	if (idSave === tmpIdSave) {
+	} else if (idSave === tmpIdSave) {
 		console.log("아이디 중복");
-	}
-	
-	if (pattern.test(idSave) || idSave.length >= 8) {
-		console.log("아이디에 특수문자가 포함되어 있거나 8글자 이상입니다");
+	} else if (pat2.test(idSave) || !idSave.length >= 10) {
+		console.log("아이디에 특수문자가 포함되어 있거나 10글자 이상입니다");
 	}
 }
 
@@ -68,19 +65,15 @@ function checkPass() {
 	
 	if (checkSpace(passSave)) {
 		console.log("공백 포함");
-	}
-	
-	if (!pattern.test(passSave) || !pattern2.test(passSave) || passSave.length >= 10) {
+	} else if (!pat2.test(passSave) || !pat3.test(passSave) || passSave.length >= 10) {
 		console.log("특수문자와 숫자가 포함되지 않았거나 10글자 이상입니다");
-	}
-	
-	if (passSave !== pass2Save) {
+	} else if (passSave !== pass2Save) {
 		console.log("비밀번호 불일치")
 	}
 }
 
 function setEmail(selValue) {
-	var fmSave = document.fm;
+	var fmSave = document.userInfo;
 	var email2Save = selValue[selValue.selectedIndex].value;
 	var tmp = 1;
 	
@@ -95,16 +88,31 @@ function setEmail(selValue) {
 
 function checkTel() {
 	var telSave = document.getElementById('tel').value.split("");
-	var tmp = telSave[0] + telSave[1] + telSave[2];
+	var telSave2 = document.getElementById('tel').value;
+	var idNumber = telSave[0], pullNumber = telSave[0], i;
+	
+	for(i = 1; i < 3; i++) {
+		idNumber += telSave[i];
+		pullNumber += telSave[i];
+	}
+	pullNumber += "-";
+	for(i; i < 7; i++) {
+		pullNumber += telSave[i];
+	}
+	pullNumber += "-";
+	for(i; i < 11; i++) {
+		pullNumber += telSave[i];
+	}
+	console.log(pullNumber);
 	
 	checkNull(telSave, '전화번호');
 	
-	if (tmp !== "010" || tmp !== "011") {
+	if (!pat3.test(telSave2)) {
+		console.log("숫자만 입력");
+	} else if (idNumber !== "010") {
 		console.log("식별번호 오류");
-	}
-	
-	if (telSave.length > 11) {
-		console.log("번호 길어");
+	} else if (telSave.length != 11) {
+		console.log("번호 짧거나 길어");
 	}
 }
 
@@ -153,8 +161,14 @@ window.onload = function() {
 }
 
 function setMonth() {
+	var yearSave = document.getElementById('year').value;
+	
 	for(var j = 1; j <= 12; j++) {
 		document.getElementById('month').options[j] = new Option(j, j);
+	}
+	
+	if (yearSave == 'hi') {
+		document.getElementById('month').options.length = 1;
 	}
 	document.getElementById('day').options.length = 1;
 }
@@ -174,7 +188,9 @@ function setDay() {
 	}
 }
 
-
+function allCheck() {
+	
+}
 
 
 

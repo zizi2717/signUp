@@ -8,6 +8,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
+	
 </head>    
 <body>
  	<div class="container">
@@ -16,12 +17,11 @@
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
     <h2>회원가입</h2>
+    	<form name="userInfo" method="POST" action="../signCheck.jsp" >
         <table class="table table-boardered">
 			<tr>
                 <th>이름</th>
                 <td><input type="text" class="form-control" id="name" placeholder="한국어"></td>
-                <td></td>
-                <td><input type="button" value="확인" onclick="checkName();"></td>   
             </tr>
             <tr>
                 <th>성별</th>
@@ -51,7 +51,6 @@
                 <th>이메일</th>
                 <td><input type="text" class="form-control" id="email"></td>
                 <td>
-                	<form name="fm">
                 	<input type="text" class="form-control" id="email2" disabled>
                 	<select onchange="setEmail(this);">
                 		<option value="">선택</option>
@@ -59,14 +58,11 @@
                 		<option value="daum.net">daum.net</option>
                 		<option value="dir">직접입력</option>
                 	</select>
-                	</form>
                 </td>
             </tr>
             <tr>
                 <th>전화번호</th>
                 <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>
-                <td></td>
-                <td><input type="button" value="확인" onclick="checkTel();"></td>
             </tr>
             <tr>
                 <th>주소</th>
@@ -81,7 +77,7 @@
                 <th>생년월일</th>
                 <td>
                 	<select id="year" onchange="setMonth();">
-                		<option value="">년도 선택</option>
+                		<option value="hi">년도 선택</option>
                 	</select>
                 </td>
                 <td>
@@ -102,10 +98,11 @@
                 </td>
 			</tr>
 		</table>
+		</form>
     </div>
     </div>
     </div>
 	</div>
-	<script src="./resources/js/check.js"></script>
+	<script src="./resources/js/check.js?ver=1"></script>
 </body>
 </html>
