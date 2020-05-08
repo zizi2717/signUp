@@ -35,7 +35,7 @@
             <tr>
                 <th>아이디</th>
                 <td><input type="text" class="form-control" id="id"></td>
-                <td><input type="hidden" class="form-control" id="tmpId" value="zizi2717" ></td>
+                <td><input type="hidden" class="form-control" id="overLapId" value="zizi2717" ></td>
                 <td><input type="button" value="확인" onclick="checkId();"></td>
             </tr>
             <tr>

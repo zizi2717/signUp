@@ -1,4 +1,7 @@
 
+var fmSave = document.userInfo;
+
+
 function checkSpace(tmp) { 
 	if(tmp.search(/\s/) != -1) 	{ 
 		return true; 
@@ -16,6 +19,7 @@ function checkName() {
 		
 	if (!nameSave.value) {
 		alert("이름을 입력해주세요");
+		nameSave.focus();
 	} else if (checkSpace(nameSave.value)) {
 		alert("이름에 공백이 포함되어있습니다");
 		nameSave.focus();
@@ -47,7 +51,7 @@ var idCheckNum;
 var tmpIdSave;
 function checkId() {
 	var idSave = document.getElementById('id');
-	var overLap = document.getElementById('tmpId');
+	var overLap = document.getElementById('overLapId');
 	
 	if (!idSave.value) {
 		alert("아이디를 입력해주세요");
@@ -107,7 +111,6 @@ function checkPass() {
 }
 
 function setEmail(selValue) {
-	var fmSave = document.userInfo;
 	var email2Save = selValue[selValue.selectedIndex].value;
 	var tmp = 1;
 	
@@ -153,7 +156,7 @@ function checkTel() {
 		pullNumber += telSave[i];
 	}
 	
-	if (!telSave) {
+	if (!telSave2) {
 		alert("전화번호를 입력해주세요");
 		telSave2.focus();
 	} else if (checkSpace(telSave2.value)) {
