@@ -8,6 +8,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
+	<link rel="shortcut icon" href="#">
 	
 </head>    
 <body>
@@ -17,7 +18,7 @@
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
     <h2>회원가입</h2>
-    	<form name="userInfo" method="POST" action="../signCheck.jsp" >
+    	<form name="userInfo">
         <table class="table table-boardered">
 			<tr>
                 <th>이름</th>
@@ -38,11 +39,11 @@
                 <td><input type="button" value="확인" onclick="checkId();"></td>
             </tr>
             <tr>
-                <th>패스워드</th>
+                <th>비밀번호</th>
                 <td><input type="password" class="form-control" id="pass1" placeholder="숫자, 문자 포함"></td>      
             </tr>
             <tr>
-                <th>패스워드확인</th>
+                <th>비밀번호 확인</th>
                 <td><input type="password" class="form-control" id="pass2"></td>  
                 <td></td>
                 <td><input type="button" value="확인" onclick="checkPass();"></td>      
@@ -61,39 +62,39 @@
                 </td>
             </tr>
             <tr>
-                <th>전화번호</th>
+                <th>휴대전화</th>
                 <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>
             </tr>
             <tr>
                 <th>주소</th>
                 <td>
-                	<input type="text" class="form-control" id="zip" placeholder="우편번호">
+                	<input type="text" class="form-control" id="zip" placeholder="우편번호" readonly>
                 	<input type="text" class="form-control" id="addr2" placeholder="상세주소">
                 </td>
-                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소"></td>
+                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소"  readonly></td>
                 <td><input type="button" value="검색" onclick="execDaumPostcode();"></td>
             </tr>
             <tr>
                 <th>생년월일</th>
                 <td>
                 	<select id="year" onchange="setMonth();">
-                		<option value="hi">년도 선택</option>
+                		<option value="yearTmp">년도 선택</option>
                 	</select>
                 </td>
                 <td>
                 	<select id="month" onchange="setDay();">
-                		<option value="">월 선택</option>
+                		<option value="monthTmp">월 선택</option>
                 	</select>
                 </td>
                 <td>
                 	<select id="day">
-                		<option value="">일 선택</option>
+                		<option value="dayTmp">일 선택</option>
                 	</select>
                 </td> 
             </tr>
             <tr>
                 <td colspan="2">
-              	  <input type="submit" class="btn btn-primary" value="가입">
+              	  <input type="button" class="btn btn-primary" value="가입" onclick="checkAll();">
               	  <input type="reset" class="btn btn-danger" value="취소">
                 </td>
 			</tr>

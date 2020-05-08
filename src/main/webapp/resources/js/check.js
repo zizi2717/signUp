@@ -1,15 +1,9 @@
 
-function checkNull(tmp, pa) {
-	if( !tmp ) { 
-		console.log(pa + "을(를) 입력해주세요"); 
-	}
-}
-
 function checkSpace(tmp) { 
 	if(tmp.search(/\s/) != -1) 	{ 
 		return true; 
 	} else { 
-		return false; 
+		return false;
 	}
 }
 
@@ -20,13 +14,13 @@ var pat4 = /[a-zA-Z]/;
 function checkName() {
 	var nameSave = document.getElementById('name');
 		
-	checkNull(nameSave.value, '이름');
-	
-	if (checkSpace(nameSave.value)) {
-		console.log("공백 포함");
+	if (!nameSave.value) {
+		alert("이름을 입력해주세요");
+	} else if (checkSpace(nameSave.value)) {
+		alert("이름에 공백이 포함되어있습니다");
 		nameSave.focus();
 	} else if(!pat1.test(nameSave.value) || pat2.test(nameSave.value) || pat3.test(nameSave.value) || pat4.test(nameSave.value)) {
-		console.log("한글만");
+		alert("이름은 한글만 입력해주세요");
 		nameSave.focus();
 	}	
 }
@@ -41,34 +35,62 @@ function checkSex(sexParm) {
 	}
 }
 
-function checkId() {
-	var idSave = document.getElementById('id').value;
-	var tmpIdSave = document.getElementById('tmpId').value;
+function checkSex2() {
+	var sexSave2 = document.getElementsByName('sex');
 	
-	checkNull(idSave, '아이디');
-	
-	if (checkSpace(idSave)) {
-		console.log("공백 포함");
-	} else if (idSave === tmpIdSave) {
-		console.log("아이디 중복");
-	} else if (pat2.test(idSave) || !idSave.length >= 10) {
-		console.log("아이디에 특수문자가 포함되어 있거나 10글자 이상입니다");
+	if (sexSave2[0].checked == false && sexSave2[1].checked == false) {
+		alert("성별을 선택해주세요");
 	}
 }
 
+var idCheckNum;
+var tmpIdSave;
+function checkId() {
+	var idSave = document.getElementById('id');
+	var overLap = document.getElementById('tmpId');
+	
+	if (!idSave.value) {
+		alert("아이디를 입력해주세요");
+		idCheckNum = 1;
+	} else if (checkSpace(idSave.value)) {
+		alert("아이디에 공백이 포함되어있습니다");
+		idCheckNum = 1;
+	} else if (idSave.value === overLap.value) {
+		alert("중복된 아이디입니다");
+		idCheckNum = 1;
+	} else if (pat2.test(idSave.value) || idSave.value.length >= 10) {
+		alert("아이디에 특수문자가 포함되어 있거나 10글자 이상입니다");
+		idCheckNum = 1;
+	} else {
+		alert("확인 완료");
+		tmpIdSave = idSave.value;
+		idCheckNum = 0;
+	}
+}
+
+var passCheckNum;
+var tmpPassSave, tmpPass2Save;
 function checkPass() {
-	var passSave = document.getElementById('pass1').value;
-	var pass2Save = document.getElementById('pass2').value;
+	var passSave = document.getElementById('pass1');
+	var pass2Save = document.getElementById('pass2');
 	
-	checkNull(passSave, '비밀번호');
-	checkNull(pass2Save, '비밀번호확인');
-	
-	if (checkSpace(passSave)) {
-		console.log("공백 포함");
-	} else if (!pat2.test(passSave) || !pat3.test(passSave) || passSave.length >= 10) {
-		console.log("특수문자와 숫자가 포함되지 않았거나 10글자 이상입니다");
-	} else if (passSave !== pass2Save) {
-		console.log("비밀번호 불일치")
+	if (!passSave.value || !pass2Save.value) {
+		alert("비밀번호를 입력해주세요");
+		passCheckNum = 1;
+	} else if (checkSpace(passSave.value)) {
+		alert("비밀번호에 공백이 포함되어있습니다");
+		passCheckNum = 1;
+	} else if (!pat2.test(passSave.value) || !pat3.test(passSave.value) || passSave.value.length >= 10) {
+		alert("특수문자와 숫자가 포함되지 않았거나 10글자 이상입니다");
+		passCheckNum = 1;
+	} else if (passSave.value !== pass2Save.value) {
+		alert("비밀번호가 일치하지 않습니다");
+		passCheckNum = 1;
+	} else {
+		alert("확인 완료");
+		tmpPassSave = passSave.value;
+		tmpPass2Save = pass2Save.value;
+		passCheckNum = 0;
 	}
 }
 
@@ -86,10 +108,23 @@ function setEmail(selValue) {
 	fmSave.email2.disabled = tmp;
 }
 
+function checkEmail() {
+	var emailSave = document.getElementById('email').value;
+	var email2Save = document.getElementById('email2').value;
+	
+	if (!emailSave || !email2Save) {
+		alert("이메일을 입력해주세요");
+	} else if (checkSpace(emailSave) || checkSpace(email2Save)) {
+		alert("이메일에 공백이 포함되어있습니다");
+	}
+}
+
 function checkTel() {
 	var telSave = document.getElementById('tel').value.split("");
 	var telSave2 = document.getElementById('tel').value;
-	var idNumber = telSave[0], pullNumber = telSave[0], i;
+	var idNumber = telSave[0];
+	var pullNumber = telSave[0];
+	var i;
 	
 	for(i = 1; i < 3; i++) {
 		idNumber += telSave[i];
@@ -103,16 +138,17 @@ function checkTel() {
 	for(i; i < 11; i++) {
 		pullNumber += telSave[i];
 	}
-	console.log(pullNumber);
 	
-	checkNull(telSave, '전화번호');
-	
-	if (!pat3.test(telSave2)) {
-		console.log("숫자만 입력");
+	if (!telSave) {
+		alert("전화번호를 입력해주세요");
+	} else if (checkSpace(telSave2)) {
+		alert("전화번호에 공백이 포함되어있습니다");
+	} else if (!pat3.test(telSave2)) {
+		alert("전화번호는 숫자만 입력해주세요");
 	} else if (idNumber !== "010") {
-		console.log("식별번호 오류");
+		alert("전화번호의 식별번호(010)가 올바르지 않습니다");
 	} else if (telSave.length != 11) {
-		console.log("번호 짧거나 길어");
+		alert("전화번호가 짧거나 깁니다");
 	}
 }
 
@@ -152,6 +188,14 @@ function execDaumPostcode() {
     }).open();
 }
 
+function checkAddr() {
+	var addr2Save = document.getElementById('addr2').value;
+	
+	if (!addr2Save) {
+		alert("상세주소를 입력해주세요");
+	}
+}
+
 window.onload = function() {
 	var tmp = 1
 	for(var i = 1900; i <= 2020; i++) {
@@ -167,7 +211,7 @@ function setMonth() {
 		document.getElementById('month').options[j] = new Option(j, j);
 	}
 	
-	if (yearSave == 'hi') {
+	if (yearSave == 'yearTmp') {
 		document.getElementById('month').options.length = 1;
 	}
 	document.getElementById('day').options.length = 1;
@@ -188,8 +232,48 @@ function setDay() {
 	}
 }
 
-function allCheck() {
+function checkBirth() {
+	var yearSave = document.getElementById('year').value;
+	var monthSave = document.getElementById('month').value;
+	var daySave = document.getElementById('day').value;
 	
+	if (yearSave == "yearTmp") {
+		alert("생년월일(년) 입력이 필요합니다");
+	} else if (monthSave == "monthTmp") {
+		alert("생년월일(월) 입력이 필요합니다");
+	} else if (daySave == "dayTmp") {
+		alert("생년월일(일) 입력이 필요합니다");
+	}
+}
+
+function checkAll() {
+	var chkId = document.getElementById('id');
+	var chkPass = document.getElementById('pass1');
+	var chkPass2 = document.getElementById('pass2');
+	
+	checkName();
+	checkSex2();
+	if (idCheckNum != 0) {
+		alert("아이디 확인이 필요합니다");
+		chkId.focus();
+	} else if (tmpIdSave !== chkId.value) {
+		alert("입력된 아이디와 확인된 아이디가 다릅니다");
+		chkId.focus();
+	}
+	if (passCheckNum != 0) {
+		alert("비밀번호 확인이 필요합니다");
+		chkPass.focus();
+	} else if (tmpPassSave !== chkPass.value) {
+		alert("입력된 비밀번호와 확인된 비밀번호가 다릅니다");
+		chkPass.focus();
+	} else if (tmpPass2Save !== chkPass2.value) {
+		alert("입력된 비밀번호 확인과 확인된 비밀번호 확인이 다릅니다");
+		chkPass2.focus();
+	}
+	checkEmail();
+	checkTel();
+	checkAddr();
+	checkBirth();
 }
 
 
