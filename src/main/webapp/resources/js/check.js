@@ -51,15 +51,19 @@ function checkId() {
 	
 	if (!idSave.value) {
 		alert("아이디를 입력해주세요");
+		idSave.focus();
 		idCheckNum = 1;
 	} else if (checkSpace(idSave.value)) {
 		alert("아이디에 공백이 포함되어있습니다");
+		idSave.focus();
 		idCheckNum = 1;
 	} else if (idSave.value === overLap.value) {
 		alert("중복된 아이디입니다");
+		idSave.focus();
 		idCheckNum = 1;
 	} else if (pat2.test(idSave.value) || idSave.value.length >= 10) {
 		alert("아이디에 특수문자가 포함되어 있거나 10글자 이상입니다");
+		idSave.focus();
 		idCheckNum = 1;
 	} else {
 		alert("확인 완료");
@@ -74,17 +78,25 @@ function checkPass() {
 	var passSave = document.getElementById('pass1');
 	var pass2Save = document.getElementById('pass2');
 	
-	if (!passSave.value || !pass2Save.value) {
+	if (!passSave.value) {
 		alert("비밀번호를 입력해주세요");
+		passSave.focus();
+		passCheckNum = 1;
+	} else if (!pass2Save.value) {
+		alert("비밀번호를 입력해주세요");
+		pass2Save.focus();
 		passCheckNum = 1;
 	} else if (checkSpace(passSave.value)) {
 		alert("비밀번호에 공백이 포함되어있습니다");
+		pass2Save.focus();
 		passCheckNum = 1;
 	} else if (!pat2.test(passSave.value) || !pat3.test(passSave.value) || passSave.value.length >= 10) {
 		alert("특수문자와 숫자가 포함되지 않았거나 10글자 이상입니다");
+		pass2Save.focus();
 		passCheckNum = 1;
 	} else if (passSave.value !== pass2Save.value) {
 		alert("비밀번호가 일치하지 않습니다");
+		pass2Save.focus();
 		passCheckNum = 1;
 	} else {
 		alert("확인 완료");
@@ -109,19 +121,21 @@ function setEmail(selValue) {
 }
 
 function checkEmail() {
-	var emailSave = document.getElementById('email').value;
-	var email2Save = document.getElementById('email2').value;
+	var emailSave = document.getElementById('email');
+	var email2Save = document.getElementById('email2')
 	
-	if (!emailSave || !email2Save) {
+	if (!emailSave.value || !email2Save.value) {
 		alert("이메일을 입력해주세요");
-	} else if (checkSpace(emailSave) || checkSpace(email2Save)) {
+		emailSave.focus();
+	} else if (checkSpace(emailSave.value) || checkSpace(email2Save.value)) {
 		alert("이메일에 공백이 포함되어있습니다");
+		emailSave.focus();
 	}
 }
 
 function checkTel() {
 	var telSave = document.getElementById('tel').value.split("");
-	var telSave2 = document.getElementById('tel').value;
+	var telSave2 = document.getElementById('tel');
 	var idNumber = telSave[0];
 	var pullNumber = telSave[0];
 	var i;
@@ -141,14 +155,19 @@ function checkTel() {
 	
 	if (!telSave) {
 		alert("전화번호를 입력해주세요");
-	} else if (checkSpace(telSave2)) {
+		telSave2.focus();
+	} else if (checkSpace(telSave2.value)) {
 		alert("전화번호에 공백이 포함되어있습니다");
-	} else if (!pat3.test(telSave2)) {
+		telSave2.focus();
+	} else if (!pat3.test(telSave2.value)) {
 		alert("전화번호는 숫자만 입력해주세요");
+		telSave2.focus();
 	} else if (idNumber !== "010") {
 		alert("전화번호의 식별번호(010)가 올바르지 않습니다");
+		telSave2.focus();
 	} else if (telSave.length != 11) {
 		alert("전화번호가 짧거나 깁니다");
+		telSave2.focus();
 	}
 }
 
@@ -193,6 +212,7 @@ function checkAddr() {
 	
 	if (!addr2Save) {
 		alert("상세주소를 입력해주세요");
+		addr2Save.focus();
 	}
 }
 
