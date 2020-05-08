@@ -122,7 +122,7 @@ function setEmail(selValue) {
 
 function checkEmail() {
 	var emailSave = document.getElementById('email');
-	var email2Save = document.getElementById('email2')
+	var email2Save = document.getElementById('email2');
 	
 	if (!emailSave.value || !email2Save.value) {
 		alert("이메일을 입력해주세요");
