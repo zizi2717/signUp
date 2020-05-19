@@ -327,17 +327,9 @@ function checkBirth() {
 		return 1;
 	}
 }
-
-function setPink(inputParm) {
-	inputParm.style.backgroundColor = "pink";
-}
-
 function checkAll() {
 	
-	if(checkName() == 1) {
-		setPink(nameSave);
-		return;
-	}
+	if(checkName() == 1) {return;}
 	if(checkSex2() == 1) {return;}
 	if (idCheckNum != 0) {
 		alert("아이디 확인이 필요합니다");
