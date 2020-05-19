@@ -10,6 +10,12 @@
 	
 	<link rel="shortcut icon" href="#">
 	
+	<style>
+		font {
+			style : display-none;
+			color : red;
+		}
+	</style>
 </head>    
 <body>
  	<div class="container">
@@ -22,7 +28,9 @@
         <table class="table table-boardered">
 			<tr>
                 <th>이름</th>
-                <td><input type="text" class="form-control" id="name" placeholder="한국어만 입력하세요"></td>
+                <td><input type="text" class="form-control" id="name" onfocusout="checkName();" placeholder="한국어만 입력하세요"></td>
+                <td></td>
+                <td><p><font id="nameWarning"></font></p></td>
             </tr>
             <tr>
                 <th>성별</th>
@@ -31,28 +39,32 @@
 	                &nbsp;&nbsp;&nbsp;
 	     			<label><input type="checkbox" name="sex" value="여" onclick="checkSex(this);">여성</label>
      			</td>
+     			<td></td>
+     			<td><p><font id="sexWarning"></font></p></td>
             </tr>
             <tr>
                 <th>아이디</th>
-                <td><input type="text" class="form-control" id="id"></td>
+                <td><input type="text" class="form-control" id="id" onfocusout="checkId();"></td>
                 <td><input type="hidden" class="form-control" id="overLap" value="zizi2717" ></td>
-                <td><input type="button" value="확인" onclick="checkId();"></td>
+                <td><p><font id="idWarning"></font></p></td>
             </tr>
             <tr>
                 <th>비밀번호</th>
-                <td><input type="password" class="form-control" id="pass1" placeholder="숫자, 문자 포함"></td>      
+                <td><input type="password" class="form-control" id="pass1" onfocusout="checkPass1();" placeholder="숫자, 문자 포함"></td>
+                <td></td>
+                <td><p><font id="passWarning"></font></p></td>
             </tr>
             <tr>
                 <th>비밀번호 확인</th>
-                <td><input type="password" class="form-control" id="pass2"></td>  
+                <td><input type="password" class="form-control" id="pass2" onfocusout="checkPass2();"></td>  
                 <td></td>
-                <td><input type="button" value="확인" onclick="checkPass();"></td>      
+                <td><p><font id="pass2Warning"></font></p></td>    
             </tr>
             <tr>
                 <th>이메일</th>
-                <td><input type="text" class="form-control" id="email"></td>
+                <td><input type="text" class="form-control" id="email" onfocusout="checkEmail();"></td>
                 <td>
-                	<input type="text" class="form-control" id="email2" disabled>
+                	<input type="text" class="form-control" id="email2" onclick="checkEmail2();" onfocusout="checkEmail();" disabled>
                 	<select onchange="setEmail(this);">
                 		<option value="">선택</option>
                 		<option value="naver.com">naver.com</option>
@@ -60,6 +72,7 @@
                 		<option value="dir">직접입력</option>
                 	</select>
                 </td>
+                <td><p><font id="emailWarning"></font></p></td>
             </tr>
             <tr>
                 <th>휴대전화</th>
@@ -71,7 +84,7 @@
                 	<input type="text" class="form-control" id="zip" placeholder="우편번호" readonly>
                 	<input type="text" class="form-control" id="addr2" placeholder="상세주소">
                 </td>
-                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소"  readonly></td>
+                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소" readonly></td>
                 <td><input type="button" value="검색" onclick="execDaumPostcode();"></td>
             </tr>
             <tr>
