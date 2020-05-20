@@ -64,51 +64,63 @@
                 <th>이메일</th>
                 <td><input type="text" class="form-control" id="email" onfocusout="checkEmail();"></td>
                 <td>
-                	<input type="text" class="form-control" id="email2" onclick="checkEmail2();" onfocusout="checkEmail();" disabled>
-                	<select onchange="setEmail(this);">
-                		<option value="">선택</option>
-                		<option value="naver.com">naver.com</option>
-                		<option value="daum.net">daum.net</option>
-                		<option value="dir">직접입력</option>
+                	<input type="text" class="form-control" id="email2" onfocusout="checkEmail();" disabled>
+                	<p></p>
+                	<select onClick="checkEmail2(this);" onchange="setEmail(this);">
+                		<option id="a" value="">선택</option>
+                		<option id="b" value="naver.com">naver.com</option>
+                		<option id="c" value="daum.net">daum.net</option>
+                		<option id="d" value="dir">직접입력</option>
                 	</select>
                 </td>
                 <td><p><font id="emailWarning"></font></p></td>
             </tr>
             <tr>
                 <th>휴대전화</th>
-                <td><input type="tel" class="form-control" id="tel" placeholder="-제외하고 입력"></td>
+                <td><input type="tel" class="form-control" id="tel" onfocusout="checkTel();" placeholder="-제외하고 입력"></td>
+                <td></td>
+                <td><p><font id="telWarning"></font></p></td>
             </tr>
             <tr>
                 <th>주소</th>
                 <td>
                 	<input type="text" class="form-control" id="zip" placeholder="우편번호" readonly>
-                	<input type="text" class="form-control" id="addr2" placeholder="상세주소">
+                	<input type="text" class="form-control" id="addr2" onfocusout="checkAddr();" placeholder="상세주소">
                 </td>
-                <td><input type="text" class="form-control" id="addr1" placeholder="기본주소" readonly></td>
-                <td><input type="button" value="검색" onclick="execDaumPostcode();"></td>
+                <td>
+                	<input type="text" class="form-control" id="addr1" placeholder="기본주소" readonly>
+                </td>
+                <td>
+                	<input type="button" value="검색" onclick="execDaumPostcode();">
+                	<p></p><font id="addrWarning"></font>
+                </td>
+                
             </tr>
             <tr>
                 <th>생년월일</th>
-                <td>
+                <td align="right">
                 	<select id="year" onchange="setMonth();">
                 		<option value="yearTmp">년도 선택</option>
                 	</select>
                 </td>
-                <td>
-                	<select id="month" onchange="setDay();">
+                <td align="left">
+               		<select id="month" onchange="setDay();">
                 		<option value="monthTmp">월 선택</option>
                 	</select>
-                </td>
-                <td>
+                	&nbsp;
                 	<select id="day">
                 		<option value="dayTmp">일 선택</option>
                 	</select>
-                </td> 
+                </td>
+                <td><p><font id="birWarning"></font></p></td>
             </tr>
             <tr>
-                <td colspan="2">
-              	  <input type="button" class="btn btn-primary" value="가입" onclick="checkAll();">
-              	  <input type="reset" class="btn btn-danger" value="취소">
+                <td></td>
+                <td align="right">
+	                <input type="button" class="btn btn-primary" value="가입" onclick="checkAll();">
+                </td>
+                <td align="left">
+                	<input type="reset" class="btn btn-danger" value="취소">
                 </td>
 			</tr>
 		</table>
