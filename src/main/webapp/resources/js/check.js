@@ -1,22 +1,24 @@
 
 var fmSave = document.userInfo;
 var nameSave = document.getElementById('name');				// 이름
-var sexSave = document.getElementsByName('sex');			// 성별
+var gendSave = document.getElementsByName('gend');			// 성별
 var idSave = document.getElementById('id');					// 아이디
-var overLapId = document.getElementById('overLap');			// 중복 아이디(더미)
 var passSave = document.getElementById('pass1');			// 비밀번호1
 var pass2Save = document.getElementById('pass2');			// 비밀번호 2
 var emailSave = document.getElementById('email');			// 이메일 앞
 var email2Save = document.getElementById('email2');			// 이메일 뒤
 var telSave = document.getElementById('tel');				// 전화번호
+var zipSave = document.getElementById('zip');
+var addr1Save = document.getElementById('addr1');
+var addr2Save = document.getElementById('addr2');
 var yearSave = document.getElementById('year');				// 생년월일(년)
 var monthSave = document.getElementById('month');			// 생년월일(월)
 var daySave = document.getElementById('day');				// 생년월일(일)
 
 var nameCheckNum = 0;
 var nwn = document.getElementById('nameWarning');
-var sexCheckNum = 0;
-var swn = document.getElementById('sexWarning');
+var gendCheckNum = 0;
+var swn = document.getElementById('gendWarning');
 var idCheckNum = 0;
 var iwn = document.getElementById('idWarning');
 var passCheckNum = 0;
@@ -66,24 +68,24 @@ function checkName() {
 	nwn.textContent = nameWar;
 }
 
-function checkSex(sexParm) {
+function checkgend(gendParm) {
 	
-	for (var i = 0; i < sexSave.length; i++) {
-		if (sexSave[i] != sexParm) {
-			sexSave[i].checked = false;
+	for (var i = 0; i < gendSave.length; i++) {
+		if (gendSave[i] != gendParm) {
+			gendSave[i].checked = false;
 		}
 	}
 }
 
-function checkSex2() {
+function checkgend2() {
 	swn.style.display = "";
 	
-	if (sexSave[0].checked == false && sexSave[1].checked == false) {
+	if (gendSave[0].checked == false && gendSave[1].checked == false) {
 		swn.textContent = "필수정보입니다";
-		sexCheckNum = 1;
+		gendCheckNum = 1;
 	} else {
 		swn.style.display = "none";
-		sexCheckNum = 0;
+		gendCheckNum = 0;
 	}
 }
 
@@ -95,8 +97,7 @@ function checkId() {
 	if (!idSave.value) {
 		idWar = "필수정보입니다";
 		idCheckNum = 1;
-	} else if (idSave.value === overLapId.value) {idCheckNum = 1;}
-	  else if (checkSpace(idSave.value)) {idCheckNum = 1;}
+	} else if (checkSpace(idSave.value)) {idCheckNum = 1;}
 	  else if (pat2.test(idSave.value) || idSave.value.length >= 10) {idCheckNum = 1;}
 	  else if (pat5.test(idSave.value)) {idCheckNum = 1;}
 	  else {
@@ -108,7 +109,7 @@ function checkId() {
 
 function checkPass1() {
 	
-	var passWar = "숫자와 특수문자를 반드시 포함한 10자 이상의 비밀번호만 사용 가능합니다";
+	var passWar = "숫자와 특수문자를 포함한 10자 이상의 비밀번호만 사용 가능합니다";
 	pwn.style.display = "";
 	
 	if (!passSave.value) {
@@ -288,9 +289,6 @@ function execDaumPostcode() {
 }
 
 function checkAddr() {
-	var addr1Save = document.getElementById('addr1');
-	var addr2Save = document.getElementById('addr2');
-	var zipSave = document.getElementById('zip');
 	
 	var addrWar = "필수정보입니다";
 	awn.style.display = "";
@@ -356,13 +354,20 @@ function checkBirth() {
 }
 
 function checkAll() {
-	checkSex2();
+	var fm = document.userInfo;
+	
+	checkgend2();
 	checkBirth();
 	
-	if (!nameCheckNum || !sexCheckNum || !idCheckNum || !passCheckNum || !pass2CheckNum 
-			|| !emailCheckNum || !telCheckNum || !addrCheckNum || !birCheckNum) {return 1;}
+	document.getElementsByName('email').value = emailSave.value + "@" + email2Save.value;
+	document.getElementsByName('addr').value = "(" + zipSave + ")" + addr1Save.value + " " + addr2Save.value;
+	document.getElementsByName('birth').value = yearSave.value + "-" + monthSave.value + "-" + daySave.value;
+	
+	if (nameCheckNum || gendCheckNum || idCheckNum || passCheckNum || pass2CheckNum 
+			|| emailCheckNum || telCheckNum || addrCheckNum || birCheckNum) {return false;}
 	else {
 		alert("환영합니다");
+		fm.submit();
 	}
 }
 

@@ -1,5 +1,7 @@
 package com.prac.signup.mapper;
 
-public class SignupMapper {
+import com.prac.signup.vo.SignupVO;
 
+public interface SignupMapper {
+	public int insertInfo(SignupVO vo);
 }

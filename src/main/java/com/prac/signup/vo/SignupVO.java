@@ -5,7 +5,7 @@ import java.util.Date;
 public class SignupVO {
 
 	private int seq;
-	private String name, gend, id, pwd, mail, tel, addr, birt;
+	private String name, gend, id, pwd, email, tel, addr, birth;
 	private Date regdate;
 	
 	public int getSeq() {
@@ -38,11 +38,11 @@ public class SignupVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTel() {
 		return tel;
@@ -56,11 +56,11 @@ public class SignupVO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public String getBirt() {
-		return birt;
+	public String getBirth() {
+		return birth;
 	}
-	public void setBirt(String birt) {
-		this.birt = birt;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	public Date getRegdate() {
 		return regdate;
