@@ -304,6 +304,7 @@ function checkAddr() {
 }
 
 window.onload = function() {
+	
 	var tmp = 1
 	for(var i = 1900; i <= 2020; i++) {
 		document.getElementById('year').options[tmp] = new Option(i, i);
@@ -358,9 +359,11 @@ function checkAll() {
 	checkSex2();
 	checkBirth();
 	
-	if (nameCheckNum == 0 || sexCheckNum == 0 || idCheckNum == 0 || passCheckNum == 0 
-			|| pass2CheckNum == 0 || emailCheckNum == 0 || telCheckNum == 0 
-			|| addrCheckNum == 0 || birCheckNum == 0){return 1;}
+	if (!nameCheckNum || !sexCheckNum || !idCheckNum || !passCheckNum || !pass2CheckNum 
+			|| !emailCheckNum || !telCheckNum || !addrCheckNum || !birCheckNum) {return 1;}
+	else {
+		alert("환영합니다");
+	}
 }
 
 
