@@ -4,7 +4,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,11 +21,15 @@ public class HomeController {
 		return "/signUp";
 	}
 	
-	@PostMapping("signup")
-	public String signup(SignupVO vo) {
-		
+	@PostMapping("regUser")
+	public String regUser(SignupVO vo) {
+//		int result = 0;
 		sql.getMapper(com.prac.signup.mapper.SignupMapper.class).insertInfo(vo);
-
-		return "/signUp";
+		
+//		String msg = (result == 1) ? "회원가입 성공 했습니다." : "회원가입 실패!";
+		
+//		String resultPage = (result == 1) ? "/signCheck" : "/signUp";
+		
+		return "/signCheck";
 	}
 }

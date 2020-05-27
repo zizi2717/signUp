@@ -54,21 +54,21 @@ function checkName() {
 	
 	if (!nameSave.value) {
 		nameWar = "필수정보입니다";
-		nameCheckNum = 1;
+		nameCheckNum = 0;
 	} else if (checkSpace(nameSave.value)) {
 		nameWar = "공백이 포함되어있습니다";
-		nameCheckNum = 1;
+		nameCheckNum = 0;
 	} else if(!pat1.test(nameSave.value) || pat2.test(nameSave.value) || pat3.test(nameSave.value) || pat4.test(nameSave.value)) {
 		nameWar = "한글만 입력주세요";
-		nameCheckNum = 1;
+		nameCheckNum = 0;
 	} else {
 		nwn.style.display = "none";
-		setCheckNum = 0;
+		nameCheckNum = 1;
 	}
 	nwn.textContent = nameWar;
 }
 
-function checkgend(gendParm) {
+function checkGend(gendParm) {
 	
 	for (var i = 0; i < gendSave.length; i++) {
 		if (gendSave[i] != gendParm) {
@@ -77,15 +77,15 @@ function checkgend(gendParm) {
 	}
 }
 
-function checkgend2() {
+function checkGend2() {
 	swn.style.display = "";
 	
 	if (gendSave[0].checked == false && gendSave[1].checked == false) {
 		swn.textContent = "필수정보입니다";
-		gendCheckNum = 1;
+		gendCheckNum = 0;
 	} else {
 		swn.style.display = "none";
-		gendCheckNum = 0;
+		gendCheckNum = 1;
 	}
 }
 
@@ -102,25 +102,25 @@ function checkId() {
 	  else if (pat5.test(idSave.value)) {idCheckNum = 1;}
 	  else {
 		iwn.style.display = "none";
-		idCheckNum = 0;
+		idCheckNum = 1;
 	}
 	iwn.textContent = idWar;
 }
 
 function checkPass1() {
 	
-	var passWar = "숫자와 특수문자를 포함한 10자 이상의 비밀번호만 사용 가능합니다";
+	var passWar = "숫자와 특수문자를 포함한 11자 이상의 비밀번호만 사용 가능합니다";
 	pwn.style.display = "";
 	
 	if (!passSave.value) {
 		passWar = "필수정보입니다";
-		passCheckNum = 1;
+		passCheckNum = 0;
 	} else if (checkSpace(passSave.value)) {passCheckNum = 1;}
 	  else if (!pat2.test(passSave.value) || !pat3.test(passSave.value) 
-			  || passSave.value.length >= 10) {passCheckNum = 1;}
+			  || passSave.value.length <= 11) {passCheckNum = 1;}
 	  else {
 		pwn.style.display = "none";
-		passCheckNum = 0;
+		passCheckNum = 1;
 	}
 	pwn.textContent = passWar;
 }
@@ -132,11 +132,11 @@ function checkPass2() {
 	
 	if (!pass2Save.value) {
 		pass2War = "필수정보입니다";
-		pass2CheckNum = 1;
+		pass2CheckNum = 0;
 	} else if (passSave.value !== pass2Save.value) {pass2CheckNum = 1;}
 	  else {
 		p2wn.style.display = "none";
-		pass2CheckNum = 0;
+		pass2CheckNum = 1;
 	}
 	p2wn.textContent = pass2War;
 }
@@ -163,7 +163,7 @@ function checkEmail() {
 	else if (checkSpace(emailSave.value) || checkSpace(email2Save.value)) {emailCheckNum = 1;}
 	else {
 		ewn.style.display = "none";
-		emailCheckNum = 0;
+		emailCheckNum = 1;
 	}
 	ewn.textContent = emailWar;
 }
@@ -176,15 +176,15 @@ function checkEmail2(selValue) {
 	if (emailParm.value == "" || emailParm.value == "dir") {
 		ewn.textContent = email2War;
 		ewn.style.display = "";
-		emailCheckNum = 1;
+		emailCheckNum = 0;
 	} else {
 		if (!emailSave.value) {
 			ewn.textContent = email2War;
 			ewn.style.display = "";
-			emailCheckNum = 1;
+			emailCheckNum = 0;
 		} else {
 			ewn.textContent = "";
-			emailCheckNum = 0;
+			emailCheckNum = 1;
 		}
 	}
 }
@@ -238,16 +238,16 @@ function checkTel() {
 	
 	if (!telSave.value) {
 		telWar = "필수정보입니다";
-		telCheckNum = 1;
-	} else if (checkSpace(telSave.value)) {telCheckNum = 1}
-	  else if (!pat3.test(telSave.value)) {telCheckNum = 1}
-	  else if (telSaveArr.length != 13) {telCheckNum = 1}
+		telCheckNum = 0;
+	} else if (checkSpace(telSave.value)) {telCheckNum = 0}
+	  else if (!pat3.test(telSave.value)) {telCheckNum = 0}
+	  else if (telSaveArr.length != 13) {telCheckNum = 0}
 	  else if (idNumber !== "010") {
 		  telWar = "식별번호 오류입니다";
-		  telCheckNum = 1;
+		  telCheckNum = 0;
 	} else {
 		  twn.style.display = "none";
-		  telCheckNum = 0;
+		  telCheckNum = 1;
 	}
 	twn.textContent = telWar;
 }
@@ -296,7 +296,7 @@ function checkAddr() {
 	if (!addr1Save.value || !addr2Save.value || !zipSave.value) {addrCheckNum = 1;}
 	else {
 		addrWar= "";
-		addrCheckNum = 0;
+		addrCheckNum = 1;
 	}
 	awn.textContent = addrWar;
 }
@@ -346,31 +346,29 @@ function checkBirth() {
 	if (yearSave.value == "yearTmp" || monthSave.value == "monthTmp" ||
 			daySave.value == "dayTmp") {
 		bwn.textContent = "필수정보입니다";
-		birCheckNum = 1;
+		birCheckNum = 0;
 	} else {
 		bwn.style.display = "none";
-		birCheckNum = 0;
+		birCheckNum = 1;
 	}
 }
 
 function checkAll() {
 	var fm = document.userInfo;
 	
-	checkgend2();
+	document.getElementsByName('email')[0].value = emailSave.value + "@" + email2Save.value;
+	document.getElementsByName('addr')[0].value = "(" + zipSave.value + ")" + addr1Save.value + " " + addr2Save.value;
+	document.getElementsByName('birth')[0].value = yearSave.value + "-" + monthSave.value + "-" + daySave.value;
+	
+	checkGend2();
 	checkBirth();
 	
-	document.getElementsByName('email').value = emailSave.value + "@" + email2Save.value;
-	document.getElementsByName('addr').value = "(" + zipSave + ")" + addr1Save.value + " " + addr2Save.value;
-	document.getElementsByName('birth').value = yearSave.value + "-" + monthSave.value + "-" + daySave.value;
-	
-	if (nameCheckNum || gendCheckNum || idCheckNum || passCheckNum || pass2CheckNum 
-			|| emailCheckNum || telCheckNum || addrCheckNum || birCheckNum) {return false;}
-	else {
+	if (!nameCheckNum || !gendCheckNum || !idCheckNum || !passCheckNum || !pass2CheckNum 
+			|| !emailCheckNum || !telCheckNum || !addrCheckNum || !birCheckNum) {
+		console.log("오류");
+		return false;
+	} else {
 		alert("환영합니다");
 		fm.submit();
 	}
 }
-
-
-
-

@@ -68,4 +68,5 @@ public class SignupVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
 }

@@ -16,8 +16,15 @@
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
     <h2>회원가입</h2>
-    	<form name="userInfo" method="post" action="/signup">
+    	<form name="userInfo" method="post" action="regUser">
         <table class="table table-boardered">
+        	<tr>
+        		<td>
+        			<input type="hidden" name="email">
+        			<input type="hidden" name="addr">
+        			<input type="hidden" name="birth">
+        		</td>
+        	</tr>
 			<tr>
                 <th>이름</th>
                 <td colspan="2"><input type="text" class="form-control" name="name" id="name" onfocusout="checkName();" placeholder="한국어만 입력하세요"></td>
@@ -30,9 +37,9 @@
             <tr>
                 <th>성별</th>
                 <td colspan="2">
-	                <label><input type="checkbox" name="gend" value="남" onclick="checkgend(this);">남성</label>
+	                <label><input type="checkbox" name="gend" value="남" onclick="checkGend(this);">남성</label>
 	                &nbsp;&nbsp;&nbsp;
-	     			<label><input type="checkbox" name="gend" value="여" onclick="checkgend(this);">여성</label>
+	     			<label><input type="checkbox" name="gend" value="여" onclick="checkGend(this);">여성</label>
      			</td>
             </tr>
             <tr>
@@ -67,9 +74,9 @@
             </tr>
             <tr>
                 <th>이메일</th>
-                <td><input type="text" class="form-control" name="email" id="email" onfocusout="checkEmail();"></td>
+                <td><input type="text" class="form-control" id="email" onfocusout="checkEmail();"></td>
                 <td>
-                	<input type="text" class="form-control" id="email2" onfocusout="checkEmail();" disabled>
+                	<input type="text" class="form-control" id="email2" onfocusout="checkEmail();" disabled="disabled"> 
                 </td>
                 <td>
               		<select class="form-control" onClick="checkEmail2(this);" onchange="setEmail(this);">
@@ -82,7 +89,6 @@
             <tr>
             	<th id='thWan'></th>
                 <td colspan="2" id='tdWan'><p><font id="emailWarning"></font></p></td>
-            </tr>
             </tr>
             <tr>
                 <th>휴대전화</th>
@@ -106,7 +112,7 @@
             </tr>
             <tr>
             	<td colspan="2">
-            		<input type="text" class="form-control" name="addr" id="addr2" onfocusout="checkAddr();" placeholder="상세주소">
+            		<input type="text" class="form-control" id="addr2" onfocusout="checkAddr();" placeholder="상세주소">
             	</td>
             </tr>
             <tr>
@@ -116,7 +122,7 @@
             <tr>
                 <th>생년월일</th>
                 <td>
-                	<select class="form-control" name="birth" id="year" onchange="setMonth();">
+                	<select class="form-control" id="year" onchange="setMonth();">
                 		<option value="yearTmp">년도 선택</option>
                 	</select>
                 </td>
