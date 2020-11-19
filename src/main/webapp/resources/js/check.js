@@ -1,4 +1,16 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
 var fmSave = document.userInfo;
 var nameSave = document.getElementById('name');				// 이름
 var sexSave = document.getElementsByName('sex');			// 성별
